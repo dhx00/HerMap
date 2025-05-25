@@ -5,7 +5,7 @@
     width: 500px;              /* 缩短宽度（原来可能是 400px）*/
     height: 600px;  
 
-    background-image: url('/image/vhp.JPG'); /* 替换成你自己的路径 */
+    background-image: url('vhp.JPG'); /* 替换成你自己的路径 */
     background-size: cover;    /* 确保图片铺满背景 */
     background-repeat: no-repeat;
     background-position: center;
