@@ -30,3 +30,12 @@
 .custom-popup .leaflet-popup-tip {
     display: none;
 } 
+
+.leaflet-popup.hermap-popup-yellow .leaflet-popup-content-wrapper {
+    background-color: rgba(249, 192, 50, 0.6) !important;
+    color: #333;
+    font-size: 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Georgia, serif;
+} 
