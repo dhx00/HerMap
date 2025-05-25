@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HerMap-Intro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 在这里写 CSS 样式 */
+    body {
+      background-image: url('image/vhp2.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+    }   
+    .card{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.85); /* 半透明白色 */
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      width: 1000px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      position: center;
+    }
+    #title{
+        font-size: 50px;
+        color:rgb(249, 192, 50);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    #text{
+        font-size: 25px;
+        color:rgb(86, 85, 85);
+    }
+    #map-button{
+        width: 160px;
+        height: 40px;
+        text-align: center;
+        border:none;
+        border-radius:5px;
+        position:center;
+        box-shadow: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        color:rgb(86,85,85);
+        font-size:16px;
+    }
+    #map-button:hover {
+      background-color: rgb(230, 150, 50);
+      transform: scale(1.03);
+    }
+
+    #map-buttont:active {
+      background-color: rgb(249, 192, 50);
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class = "card">
+    <h1 id="title">HerMap</h1>
+  <p id="text">"Understanding women's history is essential to understanding human history.
+    For centuries, women's voices, achievements, and struggles have been overlooked or erased. 
+    By revisiting and honoring their stories, we not only correct historical gaps, 
+    but also inspire future generations to build a more just, inclusive, and empowered world."</p>
+  <button id="map-button" onclick = "window.location.href='map.html'">Enter the live map</button>
+</div>
+  <script>
+    // 在这里写你的 JavaScript 脚本
+
+  </script>
+
+</body>
+</html>
