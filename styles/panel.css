@@ -4,7 +4,6 @@
     right: 20px;
     width: 500px;              /* 缩短宽度（原来可能是 400px）*/
     height: 600px;  
-    background-color: yellow;
 
     background-image: url('../image/vhp.jpg'); /* 替换成你自己的路径 */
     background-size: cover;    /* 确保图片铺满背景 */
@@ -118,4 +117,3 @@
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
