@@ -5,47 +5,62 @@
   <title>Women's History Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Leaflet CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <style>
-    #map { height: 100vh; width: 100vw}
-  </style>
+  <link rel="stylesheet" href="styles/map.css" />
+  <link rel="stylesheet" href="styles/panel.css" />
+  <link rel="stylesheet" href="styles/timeline.css" />
 </head>
+
 <body>
+  <div id="slider-container">
+    <label for="year-slider">Choose a specific year:</label>
+    <input type="range" id="year-slider" min="1900" max="2030" value="1950" step="10">
+    <span id="year-display">1950</span>
+    <button id="reset-to-all">Display all</button>
+  </div>
 
-<div id="map"></div>
+  <div id="map"></div>
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <div id="info-panel">
+    <button id="info-panel-close">&times;</button>
 
-<script>
-  // 初始化地图
-  const map = L.map('map').setView([30, -90], 3);  // 中心偏向北美洲，全景显示
+    <!-- ✅ 半透明内容区域 -->
+    <div id="chat-content-box">
+      <div id="info-panel-content"></div>
+    </div>
 
+    <div id="chat-input-area">
+      <input type="text" id="chat-user-input" placeholder="Ask AI..." />
+      <button id="chat-send-btn">Send</button>
+    </div>
+  </div>
 
-  // 加载底图
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="timecontrol.js"></script>
+  <script type="module">
+    import { mapConfig } from './js/config/mapConfig.js';
+    import { MarkerManager } from './js/markers/markerManager.js';
+    import { TimelineManager } from './js/timeline/timelineManager.js';
 
-//   const marker = L.marker([37.7749, -122.4194]).addTo(map); // San Francisco
-//   marker.bindPopup("示例事件：1905年女性选举集会");
-  // 加载 JSON 数据
-  fetch("events.json")
-    .then(res => res.json())
-    .then(data => {
-        console.log("Loaded:", data);  // ✅ 看是否读取成功
-        data.forEach(event => {
-        console.log("LAT/LNG:", event.lat, event.lng);  // 🔍 检查坐标值
-        if (event.lat && event.lng) {
-            const marker = L.marker([parseFloat(event.lat), parseFloat(event.lng)]).addTo(map);
-            marker.bindPopup(`<strong>${event.time}</strong><br>${event.summary}`);
-        }
-        });
-    })
+    const map = L.map('map', mapConfig);
+    
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS',
+      maxZoom: 13
+    }).addTo(map);
 
-    .catch(err => console.error("JSON load error:", err));
-</script>
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri',
+      maxZoom: 13
+    }).addTo(map);
 
+    const markerManager = new MarkerManager(map);
+    
+    const timelineManager = new TimelineManager(markerManager);
+    timelineManager.loadEvents();
+  </script>
+  <!-- <script src="map.js"></script> -->
 </body>
 </html>
