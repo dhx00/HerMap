@@ -1,0 +1,32 @@
+#map { 
+    height: 100vh; 
+    width: 100vw; 
+}
+
+.custom-marker {
+    background-color: rgb(249, 192, 50);
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.custom-popup {
+    background-color: rgba(249, 192, 50, 0.6);
+    border-radius: 8px;
+    font-family: Georgia, serif;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+    background: transparent;
+    font-family: Georgia, serif;
+    box-shadow: none;
+}
+
+.custom-popup .leaflet-popup-tip-container {
+    display: none;
+}
+
+.custom-popup .leaflet-popup-tip {
+    display: none;
+} 
